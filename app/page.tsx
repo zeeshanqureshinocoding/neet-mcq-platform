@@ -1,4 +1,9 @@
+'use client';
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
+  const router = useRouter();
+
   return (
     <main style={{
       minHeight: '100vh',
@@ -38,14 +43,16 @@ export default function Home() {
             { icon: '⚗️', label: 'Chemistry', chapters: '30 Chapters' },
             { icon: '⚡', label: 'Physics', chapters: '30 Chapters' },
           ].map((subject) => (
-            <div key={subject.label} style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '16px',
-              padding: '30px 20px',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}>
+            <div
+              key={subject.label}
+              onClick={() => router.push('/practice')}
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '16px',
+                padding: '30px 20px',
+                cursor: 'pointer',
+              }}>
               <div style={{ fontSize: '40px', marginBottom: '10px' }}>{subject.icon}</div>
               <div style={{ fontSize: '22px', fontWeight: 'bold' }}>{subject.label}</div>
               <div style={{ fontSize: '14px', color: '#64748b', marginTop: '5px' }}>{subject.chapters}</div>
@@ -53,16 +60,18 @@ export default function Home() {
           ))}
         </div>
 
-        <button style={{
-          background: 'linear-gradient(90deg, #38bdf8, #818cf8)',
-          border: 'none',
-          borderRadius: '50px',
-          padding: '16px 48px',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          color: 'white',
-          cursor: 'pointer'
-        }}>
+        <button
+          onClick={() => router.push('/practice')}
+          style={{
+            background: 'linear-gradient(90deg, #38bdf8, #818cf8)',
+            border: 'none',
+            borderRadius: '50px',
+            padding: '16px 48px',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            color: 'white',
+            cursor: 'pointer'
+          }}>
           Start Practicing →
         </button>
 
